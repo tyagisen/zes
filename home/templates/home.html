@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block logo %}
+{% for nav in image %}
+{% if forloop.counter is 1 %}
+<a href="{% url 'nav-bar' %}"><img src="{{nav.logo.url}}" alt=""></a>
+{% endif %}
+{% endfor %}
+{% endblock %}
