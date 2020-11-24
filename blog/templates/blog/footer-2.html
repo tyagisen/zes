@@ -1,0 +1,161 @@
+{% load static %}
+<!-- Footer -->
+<footer class="daz-footer">
+    <div class="footer-top" style="background-image:url(images/map1.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-5 col-xl-3 col-lg-4 col-sm-6 footer-col-4 col-12">
+                    <div class="widget border-0">
+                        <h4 class="m-b10 text-white">Company</h4>
+                        <div class="separator separat-line bg-white w3"></div>
+                        <ul class="list-2">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html">About us </a></li>
+                            <li><a href="index.html">Our Team</a></li>
+                            <li><a href="index.html">Hire Developers</a></li>
+                            <li><a href="index.html">Industries</a></li>
+                            <li><a href="index.html">Portfolio</a></li>
+                            <li><a href="index.html">Contact Us</a></li>
+                            <li><a href="index.html">Blogs</a></li>
+                            <li><a href="index.html">Testimonials</a></li>
+                            <li><a href="index.html">Careers</a></li>
+                            <li><a href="index.html">Portfolio</a></li>
+                            <li><a href="index.html">Contact Us</a></li>
+                            <li><a href="index.html">Blogs</a></li>
+                            <li><a href="index.html">Testimonials</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 col-lg-4 col-sm-6 footer-col-4 col-12">
+                    <h4 class="m-b10 text-white">Company</h4>
+                    <div class="separator separat-line bg-white w3"></div>
+                    <div class="widget recent-posts-entry">
+                        {% if arrange %}
+                        <div class="widget-post-bx">
+                            <div class="widget-post clearfix">
+                                <div class="post-media"><img src="{{sug.blog_image.url}}" alt="" width="200"
+                                                             height="160"></div>
+                                <div class="post-info">
+                                    <div class="post-header">
+                                        <h6 class="post-title"><a href="#">{{sug.blog_title}}</a></h6>
+                                    </div>
+                                    <div class="post-meta">
+                                        <ul>
+                                            <li class="post-author">{{sug.author}}</li>
+                                            <li class="post-comment"><i class="ti-comment-alt"></i> 28</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        {% for blog in blog %}
+                        <div class="widget-post-bx">
+                            <div class="widget-post clearfix">
+                                <div class="post-media"><img src="{{blog.blog_image.url}}" alt="" width="200"
+                                                             height="160"></div>
+                                <div class="post-info">
+                                    <div class="post-header">
+                                        <h6 class="post-title"><a href="#">{{blog.blog_title}}</a></h6>
+                                    </div>
+                                    <div class="post-meta">
+                                        <ul>
+                                            <li class="post-author">{{blog.author}}</li>
+                                            <li class="post-comment"><i class="ti-comment-alt"></i> 28</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3 col-lg-4 col-sm-6 footer-col-4  col-12">
+                    <div class="widget widget_getintuch">
+                        <h4 class="m-b10 text-white ">Contact us</h4>
+                        <div class="separator separat-line bg-white w3"></div>
+                        <ul>
+                            {% for contact in contact %}
+                            {% if contact.is_valid %}
+                            <li><i class="ti-location-pin"></i><strong>address</strong>{{contact.address}}
+                            </li>
+                            <li><i class="ti-mobile"></i><strong>phone</strong>{{contact.phone}}</li>
+                            <li><i class="ti-email"></i><strong>email</strong>{{contact.email}}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 col-sm-6 footer-col-4 d-lg-none d-xl-block  col-12">
+                    <div class="widget widget_gallery gallery-grid-4">
+                        <h4 class="m-b10 text-white">Gallery</h4>
+                        <div class="separator separat-line bg-white w3"></div>
+                        <ul>
+                            {% if arrange %}
+                            <li class="img-effect2"><a href="javascript:void(0);"><img src="{{sug.blog_image.url}}"
+                                                                                       alt=""></a></li>
+                            {% else %}
+                            {% for blog in blog %}
+                            <li class="img-effect2"><a href="javascript:void(0);"><img src="{{blog.blog_image.url}}"
+                                                                                       alt=""></a></li>
+                            {% endfor %}
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="divider bg-gray-dark tb10 op1"><i class="icon-dot c-square"></i></div>
+            <div class="row m-t30">
+                <div class="col-md-6 col-xl-6 col-lg-6 col-sm-12 footer-col-4 m-b15">
+                    <h4 class=" text-white">Flows Us</h4>
+                    <ul class="list-inline m-a0">
+                        <li><a href="#" class="site-button facebook circle "><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="site-button google-plus circle "><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li><a href="#" class="site-button linkedin circle "><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#" class="site-button instagram circle "><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#" class="site-button twitter circle "><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-xl-6 col-lg-6 col-sm-12 footer-col-4">
+                    <div class="widget">
+                        <h4 class="m-b15 text-white">Subscribe To Our Newsletter</h4>
+                        <div class="subscribe-form m-b20">
+                            <form class="dazSubscribe" action="script/mailchamp.php" method="post">
+                                <div class="dazSubscribeMsg"></div>
+                                <div class="input-group">
+                                    <input name="dzEmail" required="required" class="form-control"
+                                           placeholder="Your Email Address" type="email">
+                                    <span class="input-group-btn">
+											<button name="submit" value="Submit" type="submit"
+                                                    class="site-button white radius-xl">Subscribe</button>
+										</span>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer bottom part -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 text-left "><span>Copyright © 2018 DazzlerSoft</span></div>
+                <div class="col-md-6 col-sm-6 text-right ">
+                    <div class="widget-link ">
+                        <ul>
+                            <li><a href="help-desk.html"> Help Desk</a></li>
+                            <li><a href="privacy-policy.html"> Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer END-->

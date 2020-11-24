@@ -8,8 +8,5 @@ class Home(models.Model):
     sub_head = models.CharField(max_length=150)
     next_sub_head = models.CharField(max_length=150)
 
-
     def __str__(self):
         return self.head
-
-
