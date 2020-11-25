@@ -38,7 +38,8 @@
                                 {% for blog in blog %}
                                 <div class="post card-container col-lg-6 col-md-12 col-sm-12 mb-4">
                                     <div class="blog-grid blog-rounded theme-blog">
-                                        <div class="post-media img-effect "><a href="{% url 'blog:blog-detail' blog.pk %}">
+                                        <div class="post-media img-effect "><a
+                                                href="{% url 'blog:blog-detail' blog.pk %}">
                                             <img src="{{blog.blog_image.url}}" alt=""></a>
                                             <ul class="blog-categories">
                                                 <li><a href="#">{{blog.blog_category}}</a></li>
@@ -60,10 +61,11 @@
                                                 </ul>
                                             </div>
                                             <div class="post-text">
-                                                <p>{{blog.description|safe}}</p>
+                                                <p>{{blog.description|safe|slice:"300"}}..</p>
                                             </div>
                                             <div class="post-readmore blog-share">
-                                                <a href="{% url 'blog:blog-detail' blog.pk %}" title="Read More" rel="bookmark"
+                                                <a href="{% url 'blog:blog-detail' blog.pk %}" title="Read More"
+                                                   rel="bookmark"
                                                    class="site-button-link border-link sharp">Read More
                                                     <i class="fa fa-angle-double-right"></i>
                                                 </a>
@@ -79,11 +81,27 @@
                             <!-- Pagination start -->
                             <div class="pagination-bx clearfix text-center col-md-12">
                                 <ul class="pagination">
-                                    <li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li class="next"><a href="#">Next <i class="fa fa-angle-double-right"></i></a></li>
+                                    {% if blog.has_previous %}
+                                    <li class=""><a href="?page=1">1</a></li>
+                                    <li class="previous"><a href="?page={{blog.previous_page_number}}"><i
+                                            class="ti-arrow-left"></i> Prev</a></li>
+                                    {% endif %}
+
+                                    {% for num in blog.paginator.page_range %}
+                                    {% if blog.number == num %}
+                                    <li class="active"><a href="?page={{num}}">{{num}}</a></li>
+                                    {% elif num > blog.number|add:'-3' and blog.number|add:'3' %}
+                                    <li class=""><a href="?page={{num}}">{{num}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+
+                                    {% if blog.has_next %}
+
+                                    <li class="next"><a href="?page={{blog.next_page_number}}">Next <i
+                                            class="fa fa-angle-double-right"></i></a></li>
+                                    {% endif %}
+
+
                                 </ul>
                             </div>
                             <!-- Pagination END -->
@@ -157,34 +175,6 @@
                                                 src="{{blog.blog_image.url}}" alt=""></a></div>
                                     </li>
                                     {% endfor %}
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic1.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic5.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic7.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic8.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic9.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic3.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
-                                    <!--                                    <li>-->
-                                    <!--                                        <div><a href="#" class="post-thum img-overlay1 img-effect zoom-slow"><img-->
-                                    <!--                                                src="{% static 'images/gallery/pic4.jpg' %}" alt=""></a></div>-->
-                                    <!--                                    </li>-->
                                 </ul>
                             </div>
 

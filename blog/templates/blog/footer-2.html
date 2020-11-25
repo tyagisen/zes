@@ -50,6 +50,7 @@
                         </div>
                         {% else %}
                         {% for blog in blog %}
+                        {% if forloop.counter < 5 %}
                         <div class="widget-post-bx">
                             <div class="widget-post clearfix">
                                 <div class="post-media"><img src="{{blog.blog_image.url}}" alt="" width="200"
@@ -67,6 +68,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                         {% endfor %}
                         {% endif %}
                     </div>
